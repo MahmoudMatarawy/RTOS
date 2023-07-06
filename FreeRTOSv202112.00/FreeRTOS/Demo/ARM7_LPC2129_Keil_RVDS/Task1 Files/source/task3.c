@@ -6,7 +6,7 @@ TaskHandle_t LedOffTaskHandle = NULL;					// LED OFF Task Handler
 TaskHandle_t Toggle_Led_100_Task_handle = NULL;	// LED toggle every 100ms task handler
 TaskHandle_t Toggle_Led_400_Task_handle = NULL;	// LED toggle every 400ms task handler
 
-pinState_t Botton= NULL;												// store botton status
+pinState_t Botton= PIN_IS_LOW;												// store botton status
 
 
 
@@ -51,7 +51,7 @@ void vLedOff(void * pvParameters)
 
 
 // Function to toggle led every 100 ms if push botton pressed longer than 4000 ms 
-void vToggle100Task(void* pvParameters)
+void vToggle100Task3(void* pvParameters)
 {
 	for(;;)
 	{
@@ -114,7 +114,7 @@ void Create_task_3(void)
                     &LedOffTaskHandle);      // Used to pass out the created task's handle. 
 										
 	xTaskCreate(
-                    vToggle100Task,       // Function that implements the task. 
+                    vToggle100Task3,       // Function that implements the task. 
                     "toggle 100 task",          // Text name for the task. 
                     20,      // Stack size in words, not bytes. 
                     ( void * ) 0,    // Parameter passed into the task. 

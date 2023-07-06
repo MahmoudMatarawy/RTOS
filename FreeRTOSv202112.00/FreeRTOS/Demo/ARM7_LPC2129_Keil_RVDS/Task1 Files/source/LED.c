@@ -11,12 +11,13 @@ void led_off(unsigned char led_num)
 {
 	if(1 == led_num)
 		GPIO_write(Led_1_Port , Led_1_Pin , PIN_IS_LOW);		// Set LED pin LOW
-	else if(2 = led_num)
+	else if(2 == led_num)
 		GPIO_write(Led_2_Port , Led_2_Pin , PIN_IS_LOW);		// Set LED pin LOW
 	else if(3 == led_num)
 		GPIO_write(Led_3_Port , Led_3_Pin , PIN_IS_LOW);		// Set LED pin LOW
-	else
+	else{
 		// do nothing
+	}
 }
 
 
@@ -25,23 +26,25 @@ void led_toggle(unsigned char led_num,int period)
 {
 	if(1 == led_num)
 		GPIO_write(Led_1_Port , Led_1_Pin , PIN_IS_HIGH);		// Set LED pin high
-	else if(2 = led_num)
+	else if(2 == led_num)
 		GPIO_write(Led_2_Port , Led_2_Pin , PIN_IS_HIGH);		// Set LED pin high
 	else if(3 == led_num)
 		GPIO_write(Led_3_Port , Led_3_Pin , PIN_IS_HIGH);		// Set LED pin high
-	else
+	else{
 		// do nothing
+	}
 		
 	vTaskDelay(period);													// Block the task 
 		
 	if(1 == led_num)
 		GPIO_write(Led_1_Port , Led_1_Pin , PIN_IS_LOW);		// Set LED pin LOW
-	else if(2 = led_num)
+	else if(2 == led_num)
 		GPIO_write(Led_2_Port , Led_2_Pin , PIN_IS_LOW);		// Set LED pin LOW
 	else if(3 == led_num)
 		GPIO_write(Led_3_Port , Led_3_Pin , PIN_IS_LOW);		// Set LED pin LOW
-	else
+	else{
 		// do nothing
+	}
 				
 	vTaskDelay(period);													// Block the task 
 }

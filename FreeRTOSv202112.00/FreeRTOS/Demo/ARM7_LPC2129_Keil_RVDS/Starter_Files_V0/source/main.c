@@ -65,7 +65,9 @@
 #include "serial.h"
 #include "GPIO.h"
 
-
+#include "task1.h"
+#include "task2.h"
+#include "task3.h"
 /*-----------------------------------------------------------*/
 
 /* Constants to setup I/O and processor. */

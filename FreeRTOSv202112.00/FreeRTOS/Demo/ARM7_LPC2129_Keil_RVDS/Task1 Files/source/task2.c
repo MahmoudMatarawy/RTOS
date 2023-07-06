@@ -28,7 +28,7 @@ void vToggle500Task(void* pvParameters)
 
 
 // A task to toggle a LED every 500 ms 
-void vToggle100Task(void* pvParameters)
+void vToggle100Task2(void* pvParameters)
 {
 	for(;;)
 	{
@@ -56,7 +56,7 @@ void Create_task_2(void)
                     &Toggle_500_TaskHandle);      // Used to pass out the created task's handle. 
 										
 	xTaskCreate(
-                    vToggle100Task,       // Function that implements the task. 
+                    vToggle100Task2,       // Function that implements the task. 
                     "toggle 100 task",          // Text name for the task. 
                     20,      // Stack size in words, not bytes. 
                     ( void * ) 0,    // Parameter passed into the task. 

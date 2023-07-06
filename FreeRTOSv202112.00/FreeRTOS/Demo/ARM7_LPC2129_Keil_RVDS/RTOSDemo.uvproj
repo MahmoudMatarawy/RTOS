@@ -915,7 +915,7 @@
               <MiscControls></MiscControls>
               <Define>ARM7_LPC21xx_KEIL_RVDS KEIL_THUMB_INTERWORK</Define>
               <Undefine></Undefine>
-              <IncludePath>.;H:\Embedded\RTOS\pro\FreeRTOSv202112.00\FreeRTOSv202112.00\FreeRTOS\Source\portable\RVDS\ARM7_LPC21xx\ARM7_LPC21xx;.\Starter_Files_V0\header;.\Starter_Files_V0\lib;..\Common\include;H:\Embedded\RTOS\pro\FreeRTOSv202112.00\FreeRTOSv202112.00\FreeRTOS\Source\include;.\Task1 Files\header</IncludePath>
+              <IncludePath>.;..\..\Source\portable\RVDS\ARM7_LPC21xx;.\Starter_Files_V0\header;.\Starter_Files_V0\lib;..\Common\include;..\..\Source\include;.\Task1 Files\header</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
