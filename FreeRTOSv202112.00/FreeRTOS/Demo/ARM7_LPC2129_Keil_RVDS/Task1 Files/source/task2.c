@@ -22,7 +22,7 @@ void vToggle500Task(void* pvParameters)
 {
 	for(;;)
 	{
-		led_toggle(2,500);
+		led_toggle(3,500);
 	}
 }
 
@@ -32,7 +32,7 @@ void vToggle100Task2(void* pvParameters)
 {
 	for(;;)
 	{
-		led_toggle(2,100);
+		led_toggle(4,100);
 	}
 }
 
