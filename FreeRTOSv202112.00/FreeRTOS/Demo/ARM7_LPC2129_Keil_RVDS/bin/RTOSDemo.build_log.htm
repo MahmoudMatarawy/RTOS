@@ -1,0 +1,79 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.29.0.0
+Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Mahmoud Adel, student, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.29.0.0
+Toolchain Path:  D:\WIN PROG\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARM.DLL V5.29.0.0
+Dialog DLL:      DARMP.DLL V1.53.0.0
+Target DLL:      UL2ARM.DLL V1.74.10.0
+Dialog DLL:      TARMP.DLL V1.53.0.0
+ 
+<h2>Project:</h2>
+F:\Sprints Automotive BootCamp B11\Sprints Automotive BootCamp B11\RTOS\Task 1\ARM7_LPC2129_Keil_RVDS\RTOSDemo.uvproj
+Project File Date:  07/06/2023
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\WIN PROG\ARM\ARMCC\Bin'
+Build target 'RTOSDemo_THUMB'
+assembling serialISR.s...
+serial\serialISR.s(28): error: A1023E: File "portmacro.inc" could not be opened: No such file or directory
+serial\serialISR.s(51): error: A1163E: Unknown opcode portSAVE_CONTEXT , expecting opcode or Macro
+serial\serialISR.s(61): error: A1163E: Unknown opcode portRESTORE_CONTEXT , expecting opcode or Macro
+compiling ParTest.c...
+ParTest\ParTest.c(31): error:  #5: cannot open source input file "partest.h": No such file or directory
+  #include "partest.h"
+ParTest\ParTest.c: 0 warnings, 1 error
+compiling LED.c...
+Task1 Files\source\LED.c(14): error:  #137: expression must be a modifiable lvalue
+  	else if(2 = led_num)
+Task1 Files\source\LED.c(20): error:  #127: expected a statement
+  }
+Task1 Files\source\LED.c(28): error:  #137: expression must be a modifiable lvalue
+  	else if(2 = led_num)
+Task1 Files\source\LED.c(39): error:  #137: expression must be a modifiable lvalue
+  	else if(2 = led_num)
+Task1 Files\source\LED.c: 0 warnings, 4 errors
+compiling task2.c...
+compiling task1.c...
+Task1 Files\source\task1.c(22): warning:  #1-D: last line of file ends without a newline
+  }
+Task1 Files\source\task1.c: 1 warning, 0 errors
+compiling task3.c...
+Task1 Files\source\task3.c(9): warning:  #188-D: enumerated type mixed with another type
+  pinState_t Botton= NULL;												// store botton status
+Task1 Files\source\task3.c: 1 warning, 0 errors
+compiling tasks.c...
+"no source": Error:  #5: cannot open source input file "..\..\Source\tasks.c": No such file or directory
+..\..\Source\tasks.c: 0 warnings, 1 error
+compiling list.c...
+"no source": Error:  #5: cannot open source input file "..\..\Source\list.c": No such file or directory
+..\..\Source\list.c: 0 warnings, 1 error
+compiling queue.c...
+"no source": Error:  #5: cannot open source input file "..\..\Source\queue.c": No such file or directory
+..\..\Source\queue.c: 0 warnings, 1 error
+compiling port.c...
+"no source": Error:  #5: cannot open source input file "..\..\Source\portable\RVDS\ARM7_LPC21xx\port.c": No such file or directory
+..\..\Source\portable\RVDS\ARM7_LPC21xx\port.c: 0 warnings, 1 error
+compiling heap_2.c...
+"no source": Error:  #5: cannot open source input file "..\..\Source\portable\MemMang\heap_2.c": No such file or directory
+..\..\Source\portable\MemMang\heap_2.c: 0 warnings, 1 error
+assembling portASM.s...
+portASM.s: error: A1023E: File "..\..\Source\portable\RVDS\ARM7_LPC21xx\portASM.s" could not be opened: No such file or directory
+".\bin\RTOSDemo.axf" - 14 Error(s), 2 Warning(s).
+Target not created.
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
