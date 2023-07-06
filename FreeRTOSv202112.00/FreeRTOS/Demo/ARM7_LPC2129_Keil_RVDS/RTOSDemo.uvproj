@@ -458,22 +458,52 @@
             <File>
               <FileName>Botton.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Task1_3Files\source\Botton.c</FilePath>
-            </File>
-            <File>
-              <FileName>Botton.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Task1_3Files\header\Botton.h</FilePath>
+              <FilePath>.\Task2 Files\source\Botton.c</FilePath>
             </File>
             <File>
               <FileName>LED.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Task1_3Files\source\LED.c</FilePath>
+              <FilePath>.\Task2 Files\source\LED.c</FilePath>
+            </File>
+            <File>
+              <FileName>task1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Task2 Files\source\task1.c</FilePath>
+            </File>
+            <File>
+              <FileName>task2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Task2 Files\source\task2.c</FilePath>
+            </File>
+            <File>
+              <FileName>task3.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Task2 Files\source\task3.c</FilePath>
+            </File>
+            <File>
+              <FileName>Botton.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Task2 Files\header\Botton.h</FilePath>
             </File>
             <File>
               <FileName>LED.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Task1_3Files\header\LED.h</FilePath>
+              <FilePath>.\Task2 Files\header\LED.h</FilePath>
+            </File>
+            <File>
+              <FileName>task1.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Task2 Files\header\task1.h</FilePath>
+            </File>
+            <File>
+              <FileName>task2.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Task2 Files\header\task2.h</FilePath>
+            </File>
+            <File>
+              <FileName>task3.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Task2 Files\header\task3.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -885,7 +915,7 @@
               <MiscControls></MiscControls>
               <Define>ARM7_LPC21xx_KEIL_RVDS KEIL_THUMB_INTERWORK</Define>
               <Undefine></Undefine>
-              <IncludePath>.;..\..\Source\portable\RVDS\ARM7_LPC21xx;.\Starter_Files_V0\header;.\Starter_Files_V0\lib;..\Common\include;..\..\Source\include;.\Task1_3Files\header</IncludePath>
+              <IncludePath>.;..\..\Source\portable\RVDS\ARM7_LPC21xx;.\Starter_Files_V0\header;.\Starter_Files_V0\lib;..\Common\include;..\..\Source\include;.\Task2 Files\header</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -967,22 +997,52 @@
             <File>
               <FileName>Botton.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Task1_3Files\source\Botton.c</FilePath>
-            </File>
-            <File>
-              <FileName>Botton.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Task1_3Files\header\Botton.h</FilePath>
+              <FilePath>.\Task2 Files\source\Botton.c</FilePath>
             </File>
             <File>
               <FileName>LED.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Task1_3Files\source\LED.c</FilePath>
+              <FilePath>.\Task2 Files\source\LED.c</FilePath>
+            </File>
+            <File>
+              <FileName>task1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Task2 Files\source\task1.c</FilePath>
+            </File>
+            <File>
+              <FileName>task2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Task2 Files\source\task2.c</FilePath>
+            </File>
+            <File>
+              <FileName>task3.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Task2 Files\source\task3.c</FilePath>
+            </File>
+            <File>
+              <FileName>Botton.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Task2 Files\header\Botton.h</FilePath>
             </File>
             <File>
               <FileName>LED.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Task1_3Files\header\LED.h</FilePath>
+              <FilePath>.\Task2 Files\header\LED.h</FilePath>
+            </File>
+            <File>
+              <FileName>task1.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Task2 Files\header\task1.h</FilePath>
+            </File>
+            <File>
+              <FileName>task2.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Task2 Files\header\task2.h</FilePath>
+            </File>
+            <File>
+              <FileName>task3.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Task2 Files\header\task3.h</FilePath>
             </File>
           </Files>
         </Group>
