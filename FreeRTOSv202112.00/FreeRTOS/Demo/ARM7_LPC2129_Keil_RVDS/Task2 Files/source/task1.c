@@ -4,6 +4,12 @@
 
 #define OFF			0
 #define ON			1
+#define TASK_1_BOTTON_1									1
+#define TASK_1_LED											1
+#define TASK_1_BOTTON_1_PERIOD									10
+#define TASK_1_LED_PERIOD									10
+
+
 
 static unsigned char prog_state =  OFF;
 
@@ -15,7 +21,7 @@ void vReadBtn(void* pvParameters)
 {
 	for(;;)
 	{
-		btn_state = botton_read(1);
+		btn_state = botton_read(TASK_1_BOTTON_1);
 		if((btn_state == PIN_IS_LOW) && (prv_btn_state == PIN_IS_HIGH))
 		{
 			if(prog_state == OFF)
@@ -27,7 +33,7 @@ void vReadBtn(void* pvParameters)
 			}
 		}
 		prv_btn_state = btn_state;
-		vTaskDelay(10);
+		vTaskDelay(TASK_1_BOTTON_1_PERIOD);
 	}
 }
 
@@ -37,13 +43,13 @@ void vLedUpdate(void * pvParameters)
 	for(;;)
 	{
 		if(prog_state == OFF)
-			led_off(1);
+			led_off(TASK_1_LED);
 		else if(prog_state == ON)
-			led_on(1);
+			led_on(TASK_1_LED);
 		else{
 			// do nothing
 		}
-		vTaskDelay(10);
+		vTaskDelay(TASK_1_LED_PERIOD);
 	}
 }
 

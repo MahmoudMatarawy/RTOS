@@ -5,6 +5,17 @@
 #include "LED.h"
 
 
+#define TASK_2_LED											3
+#define TASK_2_1_PERIOD									500
+#define TASK_2_2_PERIOD									100
+#define STRINGS_NUM											10
+#define HEAVEY_LOAD_MAX_TASK_1					100000	
+#define HEAVEY_LOAD_MAX_TASK_2					20000	
+
+static signed char string_1[]="Thank\n";
+static unsigned char string_1_size = 7;
+static signed char string_2[]="I am Here\n";
+static unsigned char string_2_size = 11;
 SemaphoreHandle_t Semaphore_Handler = NULL;
 
 TaskHandle_t Task_1_TaskHandle = NULL;					// Task 1 Task Handler
@@ -20,19 +31,19 @@ void vTask_1(void* pvParameters)
 		semaphore_state = xSemaphoreTake( Semaphore_Handler, ( TickType_t ) 0 );
 		if(semaphore_state == pdTRUE)
 		{
-			led_on(2);
-			for(string_counter = 0 ; string_counter < 10 ; string_counter++)
+			led_on(TASK_2_LED);
+			for(string_counter = 0 ; string_counter < STRINGS_NUM ; string_counter++)
 			{
-				for (heavy_load_counter = 0; heavy_load_counter < 100000; heavy_load_counter++ )
+				for (heavy_load_counter = 0; heavy_load_counter < HEAVEY_LOAD_MAX_TASK_1; heavy_load_counter++ )
 						{
 							/* do nothing */
 						}
-						vSerialPutString((signed char *)"Thank\n", 7);
+						vSerialPutString(string_1, string_1_size);
 			}
-			led_off(2);
+			led_off(TASK_2_LED);
 			xSemaphoreGive( Semaphore_Handler );
 		}
-		vTaskDelay(500);
+		vTaskDelay(TASK_2_1_PERIOD);
 	}
 }
   
@@ -48,19 +59,19 @@ void vTask_2(void* pvParameters)
 		semaphore_state = xSemaphoreTake( Semaphore_Handler, ( TickType_t ) 0 );
 		if(semaphore_state == pdTRUE)
 		{
-			led_on(2);
-			for(string_counter = 0 ; string_counter < 10 ; string_counter++)
+			led_on(TASK_2_LED);
+			for(string_counter = 0 ; string_counter < STRINGS_NUM ; string_counter++)
 			{
-				for (heavy_load_counter = 0; heavy_load_counter < 20000; heavy_load_counter++ )
+				for (heavy_load_counter = 0; heavy_load_counter < HEAVEY_LOAD_MAX_TASK_2; heavy_load_counter++ )
 						{
 							/* do nothing */
 						}
-						vSerialPutString((signed char *)"I am Here\n", 11);
+						vSerialPutString(string_2, string_2_size);
 			}
-			led_off(2);
+			led_off(TASK_2_LED);
 			xSemaphoreGive( Semaphore_Handler );
 		}
-		vTaskDelay(100);
+		vTaskDelay(TASK_2_2_PERIOD);
 	}
 }
 

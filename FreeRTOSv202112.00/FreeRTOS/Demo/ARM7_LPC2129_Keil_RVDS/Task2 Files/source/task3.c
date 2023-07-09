@@ -8,6 +8,15 @@
 
 #define FALSE				0
 #define TRUE				1
+#define TASK_3_LED											3
+#define TASK_3_BOTTON_1									2
+#define TASK_3_BOTTON_2									3
+#define TASK_3_BOTTON_1_PERIOD									10
+#define TASK_3_BOTTON_2_PERIOD									10
+#define TASK_3_SEND_STRING_1_PERIOD									100
+#define TASK_3_SEND_STRING_2_PERIOD									100
+
+
 
 TaskHandle_t vReadButton1_Task_Handle=NULL;					// Botton task handler
 TaskHandle_t vReadButton2_Task_Handle = NULL;					// LED OFF Task Handler
@@ -22,13 +31,18 @@ pinState_t prv_Botton_2= PIN_IS_LOW;
 
 static unsigned char task_1_send_flag = FALSE;
 static unsigned char task_2_send_flag = FALSE;
+static signed char string_1[]="Thank2\n";
+static unsigned char string_1_size = 8;
+static signed char string_2[]="I am Here2\n";
+static unsigned char string_2_size = 12;
+
 
 // function to read botton status and store pressed period
 void vReadButton1(void * pvParameters)
 {
 	for(;;)
 	{
-		Botton_1 = botton_read(2);					// read botton status
+		Botton_1 = botton_read(TASK_3_BOTTON_1);					// read botton status
 		if(Botton_1 != prv_Botton_1)
 		{
 			task_1_send_flag = TRUE;
@@ -38,7 +52,7 @@ void vReadButton1(void * pvParameters)
 			//task_1_send_flag = FALSE;
 		}
 		prv_Botton_1 = Botton_1;
-		vTaskDelay(10);									// block the task
+		vTaskDelay(TASK_3_BOTTON_1_PERIOD);									// block the task
 	}
 }
 
@@ -48,7 +62,7 @@ void vReadButton2(void * pvParameters)
 {
 	for(;;)
 	{
-		Botton_2 = botton_read(3);					// read botton status
+		Botton_2 = botton_read(TASK_3_BOTTON_2);					// read botton status
 		if(Botton_2 != prv_Botton_2)
 		{
 			task_2_send_flag = TRUE;
@@ -58,7 +72,7 @@ void vReadButton2(void * pvParameters)
 			//task_2_send_flag = FALSE;
 		}
 		prv_Botton_2 = Botton_2;
-		vTaskDelay(10);													// block the task 
+		vTaskDelay(TASK_3_BOTTON_2_PERIOD);													// block the task 
 	}
 }
 
@@ -74,14 +88,14 @@ void vBotton_1_events(void* pvParameters)
 			semaphore_state = xSemaphoreTake( Semaphore_Handler_2, ( TickType_t ) 0 );
 			if(semaphore_state == pdTRUE)
 			{
-				led_on(3);
-				vSerialPutString((signed char *)"Thank2\n", 8);
-				led_off(3);
+				led_on(TASK_3_LED);
+				vSerialPutString(string_1, string_1_size);
+				led_off(TASK_3_LED);
 				xSemaphoreGive( Semaphore_Handler_2 );
 			}
 			task_1_send_flag = FALSE;
 		}
-		vTaskDelay(100);								// block the task
+		vTaskDelay(TASK_3_SEND_STRING_1_PERIOD);								// block the task
 	}
 }
 
@@ -97,14 +111,14 @@ void vBotton_2_events(void* pvParameters)
 			semaphore_state = xSemaphoreTake( Semaphore_Handler_2, ( TickType_t ) 0 );
 			if(semaphore_state == pdTRUE)
 			{
-				led_on(3);
-				vSerialPutString((signed char *)"I am Here2\n", 12);
-				led_off(3);
+				led_on(TASK_3_LED);
+				vSerialPutString(string_2, string_2_size);
+				led_off(TASK_3_LED);
 				xSemaphoreGive( Semaphore_Handler_2 );
 			}
 		}
 		task_2_send_flag = FALSE;
-		vTaskDelay(100);								// block the task
+		vTaskDelay(TASK_3_SEND_STRING_2_PERIOD);								// block the task
 	}
 }
 
