@@ -1,5 +1,20 @@
 #include "task3.h"
 
+#define led_off_sta				1											// led off status 
+#define led_tog_100_sta		2											// led toggle every 100 ms status
+#define led_tog_400_sta		3											// led toggle every 400 ms status
+#define LED_TOGGLE_100_MILLI_SEC			100
+#define LED_TOGGLE_400_MILLI_SEC			400
+#define TASK_3_LED											5
+#define TASK_3_BOTTON_PERIOD									10
+#define TASK_3_LED_OFF_PERIOD									50
+#define TASK_3_LED_TOGGLE_100_PERIOD									100
+#define TASK_3_LED_TOGGLE_400_PERIOD									100
+#define LED_OFF_BOTTON_HOLD_TIME											0
+#define LED_TOGGLE_100_BOTTON_HOLD_TIME								2000
+#define LED_TOGGLE_400_BOTTON_HOLD_TIME								4000
+
+
 
 TaskHandle_t Botton_Task_Handle=NULL;					// Botton task handler
 TaskHandle_t LedOffTaskHandle = NULL;					// LED OFF Task Handler
@@ -15,9 +30,7 @@ int led_sta;																		// store led status
 																								// led_off_sta : Led is off
 																								// led_tog_100_sta : Led in toggle mode every 100 ms
 																								// led_tog_400_sta : Led in toggle mode every 400 ms																								
-#define led_off_sta				1											// led off status 
-#define led_tog_100_sta		2											// led toggle every 100 ms status
-#define led_tog_400_sta		3											// led toggle every 400 ms status
+
 
 // function to read botton status and store pressed period
 void vReadButton(void * pvParameters)
@@ -27,9 +40,9 @@ void vReadButton(void * pvParameters)
 		Botton = botton_read();					// read botton status
 		if(Botton == PIN_IS_HIGH)
 		{
-			occ +=10;											// store pressed period occurrence 
+			occ += TASK_3_BOTTON_PERIOD;											// store pressed period occurrence 
 		}
-		vTaskDelay(10);									// block the task
+		vTaskDelay(TASK_3_BOTTON_PERIOD);									// block the task
 	}
 }
 
@@ -39,13 +52,13 @@ void vLedOff(void * pvParameters)
 {
 	for(;;)
 	{
-		if((occ < 2000)&&(occ > 0)&&(Botton == PIN_IS_LOW)&&(led_sta != led_off_sta)) // chack occurrence , pin status and led status
+		if((occ < LED_TOGGLE_100_BOTTON_HOLD_TIME)&&(occ > LED_OFF_BOTTON_HOLD_TIME)&&(Botton == PIN_IS_LOW)&&(led_sta != led_off_sta)) // chack occurrence , pin status and led status
 		{
-			led_off(5);														// turn led off
+			led_off(TASK_3_LED);														// turn led off
 			occ=0;																// clear occurrence 
 			led_sta = led_off_sta ;								// store led status
 		}
-		vTaskDelay(50);													// block the task 
+		vTaskDelay(TASK_3_LED_OFF_PERIOD);													// block the task 
 	}
 }
 
@@ -57,17 +70,17 @@ void vToggle100Task3(void* pvParameters)
 	{
 		if(Botton == PIN_IS_LOW)
 		{
-			if(occ > 4000)
+			if(occ > LED_TOGGLE_400_BOTTON_HOLD_TIME)
 			{
 				occ = 0;										// clear occurrence
 				led_sta = led_tog_100_sta;	// store led status
 				while(led_sta==led_tog_100_sta)
 				{
-					led_toggle(5,100);					// toggle the led every 100 ms
+					led_toggle(TASK_3_LED,LED_TOGGLE_100_MILLI_SEC);					// toggle the led every 100 ms
 				}
 			}
 		}
-		vTaskDelay(100);								// block the task
+		vTaskDelay(TASK_3_LED_TOGGLE_100_PERIOD);								// block the task
 	}
 }
 
@@ -78,17 +91,17 @@ void vToggle400Task(void* pvParameters)
 	{
 		if(Botton == PIN_IS_LOW)
 		{
-			if((occ <= 4000)&&(occ >= 2000))
+			if((occ <= LED_TOGGLE_400_BOTTON_HOLD_TIME)&&(occ >= LED_TOGGLE_100_BOTTON_HOLD_TIME))
 			{            
 				occ = 0;   													// clear occurrence
 				led_sta = led_tog_400_sta;					// store led status
 				while(led_sta==led_tog_400_sta)
 				{
-					led_toggle(5,400);									// toggle the led every 400 ms
+					led_toggle(TASK_3_LED,LED_TOGGLE_400_MILLI_SEC);									// toggle the led every 400 ms
 				}
 			}
 		}
-		vTaskDelay(100);												// block the task
+		vTaskDelay(TASK_3_LED_TOGGLE_400_PERIOD);												// block the task
 	}
 }
 

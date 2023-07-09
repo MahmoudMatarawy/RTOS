@@ -1,11 +1,17 @@
 #include "task1.h"
 #include "LED.h"
+
+
+#define LED_TOGGLE_1000_MILLI_SEC			1000
+#define TASK_1_LED											1
+
+
 // A task to toggle a LED every 1000 ms 
 void vToggleTask(void* pvParameters)
 {
 	for(;;)
 	{
-		led_toggle(1,1000);
+		led_toggle(TASK_1_LED,LED_TOGGLE_1000_MILLI_SEC);
 	}
 }
 TaskHandle_t ToggleTaskHandle = NULL;					// Toggle Task Handler
