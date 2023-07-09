@@ -65,7 +65,9 @@
 #include "serial.h"
 #include "GPIO.h"
 
-
+#include "task1.h"
+#include "task2.h"
+#include "task3.h"
 /*-----------------------------------------------------------*/
 
 /* Constants to setup I/O and processor. */
@@ -82,21 +84,7 @@
  */
 static void prvSetupHardware( void );
 /*-----------------------------------------------------------*/
-// A task to toggle a LED every 1000 ms 
-void vToggleTask(void* pvParameters)
-{
-	for(;;)
-	{
-		GPIO_write(PORT_0 , PIN0 , PIN_IS_HIGH);	// Set LED pin high
-		
-		vTaskDelay(1000);													// Block the task for 1000 ms
-		
-		GPIO_write(PORT_0 , PIN0 , PIN_IS_LOW);		// Set LED pin LOW
-		
-		vTaskDelay(1000);													// Block the task for 1000 ms 
-	}
-}
-TaskHandle_t ToggleTaskHandle = NULL;					// Toggle Task Handler  
+
 /*
  * Application entry point:
  * Starts all the other tasks, then starts the scheduler. 
@@ -107,24 +95,10 @@ int main( void )
 	prvSetupHardware();
 
 	
-    /* Create Tasks here */
-	xTaskCreate(
-                    vToggleTask,       /* Function that implements the task. */
-                    "toggle task",          /* Text name for the task. */
-                    11,      /* Stack size in words, not bytes. */
-                    ( void * ) 0,    /* Parameter passed into the task. */
-                    1,/* Priority at which the task is created. */
-                    &ToggleTaskHandle );      /* Used to pass out the created task's handle. */
-	/*while(1)
-	{
-		GPIO_write(PORT_0 , PIN0 , PIN_IS_HIGH);
-		
-		//vTaskDelay(10);
-		
-		GPIO_write(PORT_0 , PIN0 , PIN_IS_LOW);
-		
-		//vTaskDelay(10);
-	}*/
+   
+	Create_task_1();
+	Create_task_2();
+	Create_task_3();
 
 	/* Now all the tasks have been started - start the scheduler.
 
