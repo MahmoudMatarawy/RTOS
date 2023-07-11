@@ -9,8 +9,8 @@
 #define TASK_2_1_PERIOD									500
 #define TASK_2_2_PERIOD									100
 #define STRINGS_NUM											10
-#define HEAVEY_LOAD_MAX_TASK_1					100000	
-#define HEAVEY_LOAD_MAX_TASK_2					20000	
+#define HEAVEY_LOAD_MAX_TASK_1					20000	
+#define HEAVEY_LOAD_MAX_TASK_2					100000	
 
 static signed char string_1[]="Thank\n";
 static unsigned char string_1_size = 7;
@@ -24,8 +24,8 @@ TaskHandle_t Task_2_TaskHandle = NULL;					// Task 2 Task Handler
 void vTask_1(void* pvParameters)
 {
 	static unsigned char semaphore_state = pdFALSE ;
-	static unsigned char string_counter = 0;
-	static unsigned int heavy_load_counter = 0;
+	static unsigned char string_counter;
+	//static unsigned int heavy_load_counter;
 	for(;;)
 	{
 		semaphore_state = xSemaphoreTake( Semaphore_Handler, ( TickType_t ) 0 );
@@ -34,10 +34,10 @@ void vTask_1(void* pvParameters)
 			led_on(TASK_2_LED);
 			for(string_counter = 0 ; string_counter < STRINGS_NUM ; string_counter++)
 			{
-				for (heavy_load_counter = 0; heavy_load_counter < HEAVEY_LOAD_MAX_TASK_1; heavy_load_counter++ )
+				/*for (heavy_load_counter = 0; heavy_load_counter < HEAVEY_LOAD_MAX_TASK_1; heavy_load_counter++ )
 						{
-							/* do nothing */
-						}
+							// do nothing 
+						}*/
 						vSerialPutString(string_1, string_1_size);
 			}
 			led_off(TASK_2_LED);
@@ -52,8 +52,8 @@ void vTask_1(void* pvParameters)
 void vTask_2(void* pvParameters)
 {
 	static unsigned char semaphore_state = pdFALSE ;
-	static unsigned char string_counter = 0;
-	static unsigned int heavy_load_counter = 0;
+	static unsigned char string_counter;
+	static unsigned int heavy_load_counter;
 	for(;;)
 	{
 		semaphore_state = xSemaphoreTake( Semaphore_Handler, ( TickType_t ) 0 );
